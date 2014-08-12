@@ -3,6 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/splash"
+                android:id="@+id/rl_root_splash"
                 tools:context="com.myapp.mobilesafe.SplashActivity">
 
     <TextView

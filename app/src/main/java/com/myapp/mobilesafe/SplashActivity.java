@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,10 @@ public class SplashActivity extends Activity {
         tv_splash_version.setText("版本号：" + getVersionName());
         //检查升级
         checkUpdate();
+        //加入启动动画
+        AlphaAnimation animation = new AlphaAnimation(0.3f, 1.0f);
+        animation.setDuration(500);
+        findViewById(R.id.rl_root_splash).startAnimation(animation);
     }
 
     /**
