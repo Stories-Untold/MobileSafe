@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/splash"
+                tools:context="com.myapp.mobilesafe.SplashActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="手机卫士"
+        android:textSize="50sp"
+        android:textColor="#63B8FF"
+        android:id="@+id/tp_splash_title"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="版本：1.0"
+        android:textSize="20sp"
+        android:id="@+id/tp_splash_version"
+        android:layout_below="@id/tp_splash_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:shadowColor="#63B8FF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tp_splash_version"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+</RelativeLayout>
