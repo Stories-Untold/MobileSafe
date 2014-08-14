@@ -5,83 +5,21 @@
               android:orientation="vertical"
               tools:context=".MainActivity">
 
-    <LinearLayout
+    <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:padding="20dp"
-        android:orientation="vertical">
+        android:layout_marginTop="20dp"
+        android:verticalSpacing="15dp"
+        android:id="@+id/list_home"
+        android:numColumns="3"
+        android:layout_weight="1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                style="@style/mainIcon"
-                android:drawableTop="@drawable/exam_cloud_safe"
-                android:text="测试1"/>
-
-            <TextView
-                style="@style/mainIcon"
-                android:drawableTop="@drawable/exam_ad_soft"
-                android:text="测试1"/>
-
-            <TextView
-                style="@style/mainIcon"
-                android:drawableTop="@drawable/exam_auto_cloud_scan"
-                android:text="测试1"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                style="@style/mainIcon"
-                android:drawableTop="@drawable/exam_clear_package"
-                android:text="测试1"/>
-
-            <TextView
-                style="@style/mainIcon"
-                android:drawableTop="@drawable/exam_default_sms"
-                android:text="测试1"/>
-
-            <TextView
-                style="@style/mainIcon"
-                android:drawableTop="@drawable/exam_memory"
-                android:text="测试1"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                style="@style/mainIcon"
-                android:drawableTop="@drawable/exam_net_traffic"
-                android:text="测试1"/>
-
-            <TextView
-                style="@style/mainIcon"
-                android:drawableTop="@drawable/exam_rubbish_clean"
-                android:text="测试1"/>
-
-            <TextView
-                style="@style/mainIcon"
-                android:drawableTop="@drawable/exam_safe_pay"
-                android:text="测试1"/>
-
-        </LinearLayout>
-    </LinearLayout>
+    </GridView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:background="@drawable/txl_popup_qipao_bg_mid_normal">
 
         <TextView
@@ -104,4 +42,5 @@
             android:drawableTop="@drawable/tab_profile_selected"
             android:text="隐私保护"/>
     </LinearLayout>
+
 </LinearLayout>
