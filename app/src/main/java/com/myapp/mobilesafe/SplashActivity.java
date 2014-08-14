@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -59,6 +60,7 @@ public class SplashActivity extends Activity {
                         HttpRequest.HttpMethod.GET,
                         getResources().getString(R.string.serverurl),
                         new RequestCallBack<Object>() {
+
                             @Override
                             public void onLoading(long total, long current, boolean isUploading) {
                                 super.onLoading(total, current, isUploading);
@@ -83,6 +85,13 @@ public class SplashActivity extends Activity {
                                         builder.setTitle("更新提示")
                                                 .setIcon(R.drawable.app_icon)
                                                 .setMessage(description)
+                                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                                    @Override
+                                                    public void onCancel(DialogInterface dialogInterface) {
+                                                        start();
+                                                        dialogInterface.dismiss();
+                                                    }
+                                                })
                                                 .setPositiveButton("立即升级", new DialogInterface.OnClickListener() {
                                                     @Override
                                                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -104,17 +113,33 @@ public class SplashActivity extends Activity {
 
                                                                         @Override
                                                                         public void onSuccess(ResponseInfo<File> fileResponseInfo) {
-                                                                            installAPK(fileResponseInfo);
+                                                                            String downloadFilePath = fileResponseInfo.result.getAbsolutePath();
+                                                                            File f = new File(downloadFilePath);
+                                                                            installAPK(f);
                                                                         }
 
-                                                                        private void installAPK(ResponseInfo<File> fileResponseInfo) {
-
+                                                                        /**
+                                                                         * 安装应用
+                                                                         * @param f
+                                                                         */
+                                                                        private void installAPK(File f) {
+                                                                            Intent intent = new Intent();
+                                                                            intent.setAction("android.intent.action.VIEW");
+                                                                            intent.addCategory("android.intent.category.DEFAULT");
+                                                                            intent.setDataAndType(Uri.fromFile(f), "application/vnd.android.package-archive");
+                                                                            startActivity(intent);
                                                                         }
 
                                                                         @Override
                                                                         public void onFailure(HttpException e, String s) {
                                                                             e.getStackTrace();
-                                                                            Toast.makeText(getApplicationContext(), "下载失败", Toast.LENGTH_LONG).show();
+                                                                            File f = new File("/sdcard/mobildsafe.2.0.apk");
+                                                                            if (f.exists()) {
+                                                                                installAPK(f);
+                                                                            } else {
+                                                                                Toast.makeText(getApplicationContext(), "下载失败", Toast.LENGTH_LONG).show();
+                                                                                start();
+                                                                            }
                                                                         }
                                                                     }
                                                             );
@@ -142,6 +167,7 @@ public class SplashActivity extends Activity {
                             @Override
                             public void onFailure(HttpException e, String s) {
                                 Toast.makeText(getApplicationContext(), "获取版本信息失败", Toast.LENGTH_LONG).show();
+                                start();
                             }
                         }
                 );

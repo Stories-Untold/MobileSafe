@@ -1,8 +1,107 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="20dp"
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/mainIcon"
+                android:drawableTop="@drawable/exam_cloud_safe"
+                android:text="测试1"/>
+
+            <TextView
+                style="@style/mainIcon"
+                android:drawableTop="@drawable/exam_ad_soft"
+                android:text="测试1"/>
+
+            <TextView
+                style="@style/mainIcon"
+                android:drawableTop="@drawable/exam_auto_cloud_scan"
+                android:text="测试1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/mainIcon"
+                android:drawableTop="@drawable/exam_clear_package"
+                android:text="测试1"/>
+
+            <TextView
+                style="@style/mainIcon"
+                android:drawableTop="@drawable/exam_default_sms"
+                android:text="测试1"/>
+
+            <TextView
+                style="@style/mainIcon"
+                android:drawableTop="@drawable/exam_memory"
+                android:text="测试1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/mainIcon"
+                android:drawableTop="@drawable/exam_net_traffic"
+                android:text="测试1"/>
+
+            <TextView
+                style="@style/mainIcon"
+                android:drawableTop="@drawable/exam_rubbish_clean"
+                android:text="测试1"/>
+
+            <TextView
+                style="@style/mainIcon"
+                android:drawableTop="@drawable/exam_safe_pay"
+                android:text="测试1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/txl_popup_qipao_bg_mid_normal">
+
+        <TextView
+            style="@style/TabHost"
+            android:drawableTop="@drawable/tab_accelerate_selected"
+            android:text="常用功能"/>
+
+        <TextView
+            style="@style/TabHost"
+            android:drawableTop="@drawable/tab_sofeware_manager_selected"
+            android:text="软件管理"/>
+
+        <TextView
+            style="@style/TabHost"
+            android:drawableTop="@drawable/tab_security_tools_selected"
+            android:text="安全防护"/>
+
+        <TextView
+            style="@style/TabHost"
+            android:drawableTop="@drawable/tab_profile_selected"
+            android:text="隐私保护"/>
+    </LinearLayout>
+</LinearLayout>
