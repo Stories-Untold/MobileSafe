@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,21 +35,36 @@ public class SplashActivity extends Activity {
     private String description;
     private String apkurl;
     private TextView updateInfo;
+    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        tv_splash_version = (TextView) findViewById(R.id.tp_splash_version);
-        updateInfo = (TextView) findViewById(R.id.tv_update_info);
-        tv_splash_version.setText("版本号：" + getVersionName());
-        //检查升级
-        checkUpdate();
         //加入启动动画
         AlphaAnimation animation = new AlphaAnimation(0.3f, 1.0f);
         animation.setDuration(500);
         findViewById(R.id.rl_root_splash).startAnimation(animation);
+        tv_splash_version = (TextView) findViewById(R.id.tp_splash_version);
+        updateInfo = (TextView) findViewById(R.id.tv_update_info);
+        tv_splash_version.setText("版本号：" + getVersionName());
+        sp = getSharedPreferences("config", MODE_PRIVATE);
+        boolean update = sp.getBoolean("update", true);
+        if (sp.getBoolean("update", true)) {
+            //检查升级
+            checkUpdate();
+        } else {
+            //延迟代码，防止不出现Splash页面
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    start();
+                }
+            }, 5000);
+        }
     }
+
+    private Handler handler = new Handler();
 
     /**
      * 检查是否有新版本
@@ -107,6 +125,7 @@ public class SplashActivity extends Activity {
                                                                         @Override
                                                                         public void onLoading(long total, long current, boolean isUploading) {
                                                                             super.onLoading(total, current, isUploading);
+                                                                            tv_splash_version.setVisibility(View.VISIBLE);
                                                                             int process = (int) (current * 100 / total);
                                                                             updateInfo.setText("升级进度：" + process + "%");
                                                                         }

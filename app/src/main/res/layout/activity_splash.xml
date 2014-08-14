@@ -30,6 +30,7 @@
         android:shadowRadius="1"/>
 
     <ProgressBar
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tp_splash_version"
