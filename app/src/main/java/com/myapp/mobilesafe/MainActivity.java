@@ -53,6 +53,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 Intent intent = new Intent(this, SettingActivity.class);
                 startActivity(intent);
                 break;
+            //手机防盗
+            case 0:
+                break;
         }
     }
 
