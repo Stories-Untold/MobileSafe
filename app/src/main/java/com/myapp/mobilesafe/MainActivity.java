@@ -20,7 +20,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.myapp.mobilesafe.utils.MD5;
 import com.myapp.mobilesafe.utils.ViewHolder;
+
+import java.security.NoSuchAlgorithmException;
 
 
 public class MainActivity extends Activity implements AdapterView.OnItemClickListener, View.OnClickListener {
@@ -39,10 +42,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     };
     private SharedPreferences sp;
     private Button bt_password_submit;
+    private Button bt_input_password_submit;
     private Button bt_password_cancel;
     private AlertDialog.Builder passwordDialog;
     private AlertDialog mAlertDialog;
     private EditText setPwd;
+    private EditText inputPwd;
     private EditText confirmPwd;
     private View dialogView;
     private String password;
@@ -58,7 +63,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         adapter = new MyAdapter(this);
         list_home.setAdapter(adapter);
         list_home.setOnItemClickListener(this);
-        sp = getSharedPreferences("user", MODE_PRIVATE);
+        sp = getSharedPreferences("config", MODE_PRIVATE);
     }
 
     @Override
@@ -80,6 +85,17 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         //判断是否设置过密码
         if (isSetupPwd()) {
             //设置过密码
+            passwordDialog = new AlertDialog.Builder(this);
+            dialogView = View.inflate(this, R.layout.dialog_input_password, null);
+            passwordDialog.setView(dialogView);
+            mAlertDialog = passwordDialog.create();
+            //修改低版本没填充满的问题
+            mAlertDialog.setView(dialogView, 0, 0, 0, 0);
+            mAlertDialog.show();
+            bt_input_password_submit = (Button) dialogView.findViewById(R.id.bt_input_password_submit);
+            bt_password_cancel = (Button) dialogView.findViewById(R.id.bt_password_cancel);
+            bt_input_password_submit.setOnClickListener(this);
+            bt_password_cancel.setOnClickListener(this);
         } else {
             //没有设置过密码，弹出设置密码框
             passwordDialog = new AlertDialog.Builder(this);
@@ -112,12 +128,15 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 //判断密码是否为空
                 if (TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
                     Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
-                }
-                //判断是否一致，保存，消掉对话框，进入手机防盗页面
-                if (password.equals(confirmPassword)) {
+                } else if (password.equals(confirmPassword)) { //判断是否一致，保存，消掉对话框，进入手机防盗页面
                     SharedPreferences.Editor editor = sp.edit();
-                    editor.putString("password", "123");
-                    editor.commit();
+                    try {
+                        editor.putString("password", MD5.getMD5(password));
+                        editor.commit();
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    }
+                    mAlertDialog.dismiss();
                 } else {
                     Toast.makeText(this, "密码不一致", Toast.LENGTH_SHORT).show();
                 }
@@ -126,7 +145,27 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             case R.id.bt_password_cancel:
                 mAlertDialog.dismiss();
                 break;
+            case R.id.bt_input_password_submit:
+                inputPwd = (EditText) dialogView.findViewById(R.id.et_password);
+                try {
+                    password = MD5.getMD5(inputPwd.getText().toString().trim());
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+                String savePwd = sp.getString("password", "");
+                if (password.equals(savePwd)) { //判断是否一致，保存，消掉对话框，进入手机防盗页面
+                    start(this, BurglarActivity.class);
+                    mAlertDialog.dismiss();
+                } else {
+                    Toast.makeText(this, "密码错误", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
+    }
+
+    private void start(Context context, Class<?> cls) {
+        Intent intent = new Intent(context, cls);
+        startActivity(intent);
     }
 
     private class MyAdapter extends BaseAdapter {
