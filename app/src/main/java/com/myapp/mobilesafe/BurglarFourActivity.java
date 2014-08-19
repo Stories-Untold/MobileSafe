@@ -38,11 +38,11 @@ public class BurglarFourActivity extends Activity {
      * @param view
      */
     public void finish(View view) {
-        Intent intent = new Intent(this, BurglarActivity.class);
-        startActivity(intent);
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("configed", true);
         editor.commit();
+        Intent intent = new Intent(this, BurglarActivity.class);
+        startActivity(intent);
         finish();
     }
 }

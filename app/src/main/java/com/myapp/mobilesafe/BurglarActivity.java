@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * 手机防盗界面
@@ -28,6 +29,20 @@ public class BurglarActivity extends Activity {
             finish();
         }
 
+    }
+
+    /**
+     * 重新进入设置向导
+     *
+     * @param view
+     */
+    public void resetBurglar(View view) {
+        SharedPreferences.Editor editor = sp.edit();
+        editor.remove("configed");
+        editor.commit();
+        Intent intent = new Intent(this, BurglarActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

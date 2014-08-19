@@ -2,7 +2,6 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:mobile="http://schemas.android.com/apk/res/com.myapp.mobilesafe"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
@@ -18,11 +17,12 @@
 
     <com.myapp.mobilesafe.ui.SettingItemView
         android:layout_marginTop="20dp"
-        app:desc_off="sim卡没有绑定"
-        app:desc_on="sim卡已经绑定"
+        mobile:settingTitle="点击绑定SIM卡"
+        mobile:desc_off="sim卡没有绑定"
+        mobile:desc_on="sim卡已经绑定"
         android:id="@+id/bind_sim"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"></com.myapp.mobilesafe.ui.SettingItemView>
 
     <LinearLayout
         android:layout_gravity="center_horizontal"

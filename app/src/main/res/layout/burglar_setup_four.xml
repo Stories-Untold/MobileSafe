@@ -5,29 +5,11 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView
-        android:text="您的手机防盗卫士："
-        style="@style/burglar_content_style"/>
-
-    <TextView
-        android:drawableLeft="@android:drawable/star_big_on"
-        android:text="sim卡变更报警"
-        style="@style/burglar_content_style"/>
-
-    <TextView
-        android:drawableLeft="@android:drawable/star_big_on"
-        android:text="GPS追踪"
-        style="@style/burglar_content_style"/>
-
-    <TextView
-        android:drawableLeft="@android:drawable/star_big_on"
-        android:text="GPS追踪"
-        style="@style/burglar_content_style"/>
-
-    <TextView
-        android:drawableLeft="@android:drawable/star_big_on"
-        android:text="GPS追踪"
-        style="@style/burglar_content_style"/>
+    <CheckBox
+        android:padding="10dp"
+        android:text="您没有开启防盗保护"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_gravity="center_horizontal"
@@ -61,7 +43,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:src="@drawable/setup1"
+            android:src="@drawable/phone"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

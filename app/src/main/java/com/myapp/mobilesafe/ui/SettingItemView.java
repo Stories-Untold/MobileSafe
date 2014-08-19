@@ -80,6 +80,7 @@ public class SettingItemView extends RelativeLayout {
         desc_on = attrs.getAttributeValue("http://schemas.android.com/apk/res/" + packageName, "desc_on");
         desc_off = attrs.getAttributeValue("http://schemas.android.com/apk/res/" + packageName, "desc_off");
         setTitle(title);
+        setDesc(desc_off);
         initView(context);
     }
 
