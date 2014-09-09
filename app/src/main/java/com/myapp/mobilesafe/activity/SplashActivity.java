@@ -1,4 +1,4 @@
-package com.myapp.mobilesafe;
+package com.myapp.mobilesafe.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,12 +22,16 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.myapp.mobilesafe.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 
+/**
+ * Created by 庹大伟 on 2014/8/18.
+ */
 public class SplashActivity extends Activity {
 
     private static final String TAG = "myinfo";

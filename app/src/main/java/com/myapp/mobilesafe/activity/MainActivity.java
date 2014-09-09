@@ -1,4 +1,4 @@
-package com.myapp.mobilesafe;
+package com.myapp.mobilesafe.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -20,12 +20,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.myapp.mobilesafe.R;
 import com.myapp.mobilesafe.utils.MD5;
 import com.myapp.mobilesafe.utils.ViewHolder;
 
 import java.security.NoSuchAlgorithmException;
 
-
+/**
+ * Created by 庹大伟 on 2014/8/18.
+ */
 public class MainActivity extends Activity implements AdapterView.OnItemClickListener, View.OnClickListener {
 
     private GridView list_home;

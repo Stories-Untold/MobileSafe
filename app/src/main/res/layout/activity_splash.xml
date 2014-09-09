@@ -4,7 +4,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/splash"
                 android:id="@+id/rl_root_splash"
-                tools:context="com.myapp.mobilesafe.SplashActivity">
+                tools:context="com.myapp.mobilesafe.activity.SplashActivity">
 
     <TextView
         android:layout_width="wrap_content"

@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -11,11 +12,11 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,13 +25,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingActivity"
+            android:name=".activity.SettingActivity"
             android:label="@string/title_activity_setting"/>
-        <activity android:name=".BurglarActivity"/>
-        <activity android:name=".BurglarOneActivity"/>
-        <activity android:name=".BurglarTwoActivity"/>
-        <activity android:name=".BurglarThreeActivity"/>
-        <activity android:name=".BurglarFourActivity"/>
+        <activity android:name=".activity.BurglarActivity"/>
+        <activity android:name=".activity.BurglarOneActivityBase"/>
+        <activity android:name=".activity.BurglarTwoActivityBase"/>
+        <activity android:name=".activity.BurglarThreeActivityBase"/>
+        <activity android:name=".activity.BurglarFourActivityBase"/>
     </application>
 
 </manifest>

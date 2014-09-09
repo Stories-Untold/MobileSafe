@@ -1,10 +1,12 @@
-package com.myapp.mobilesafe;
+package com.myapp.mobilesafe.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+
+import com.myapp.mobilesafe.R;
 
 /**
  * 手机防盗界面
@@ -24,7 +26,7 @@ public class BurglarActivity extends Activity {
             setContentView(R.layout.activity_burglar);
         } else {
             //进入向导界面
-            Intent intent = new Intent(this, BurglarOneActivity.class);
+            Intent intent = new Intent(this, BurglarOneActivityBase.class);
             startActivity(intent);
             finish();
         }

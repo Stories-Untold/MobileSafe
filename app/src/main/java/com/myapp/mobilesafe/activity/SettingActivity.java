@@ -1,14 +1,16 @@
-package com.myapp.mobilesafe;
+package com.myapp.mobilesafe.activity;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
+import com.myapp.mobilesafe.R;
 import com.myapp.mobilesafe.ui.SettingItemView;
 
 /**
  * 设置中心
+ * Created by 庹大伟 on 2014/8/18.
  */
 public class SettingActivity extends Activity {
 

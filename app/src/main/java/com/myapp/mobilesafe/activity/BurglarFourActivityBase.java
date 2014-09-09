@@ -1,48 +1,36 @@
-package com.myapp.mobilesafe;
+package com.myapp.mobilesafe.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+
+import com.myapp.mobilesafe.R;
 
 /**
  * Created by 庹大伟 on 2014/8/18.
  */
-public class BurglarFourActivity extends Activity {
-
-    private SharedPreferences sp;
+public class BurglarFourActivityBase extends BaseSetupActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.burglar_setup_four);
-
-        sp = getSharedPreferences("config", MODE_PRIVATE);
     }
 
-    /**
-     * 上一步点击事件
-     *
-     * @param view
-     */
-    public void pre(View view) {
-        Intent intent = new Intent(this, BurglarThreeActivity.class);
+    public void showPre() {
+        Intent intent = new Intent(this, BurglarThreeActivityBase.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.pre_setup_in, R.anim.pre_setup_out);
         finish();
     }
 
-    /**
-     * Finish点击事件
-     *
-     * @param view
-     */
-    public void finish(View view) {
+    public void showNext() {
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("configed", true);
         editor.commit();
         Intent intent = new Intent(this, BurglarActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.next_setup_in, R.anim.next_setup_out);
         finish();
     }
 }

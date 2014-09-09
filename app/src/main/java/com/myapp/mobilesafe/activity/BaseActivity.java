@@ -1,13 +1,27 @@
-package com.myapp.mobilesafe;
+package com.myapp.mobilesafe.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.myapp.mobilesafe.utils.ActivityUtil;
+
 /**
  * Created by 庹大伟 on 2014/8/18.
  */
 public class BaseActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityUtil.add(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityUtil.remove(this);
+    }
 
     /**
      * 通过类名启动Activity

@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#ffffff"
-              tools:context="com.myapp.mobilesafe.SettingActivity">
+              tools:context="com.myapp.mobilesafe.activity.SettingActivity">
 
     <com.myapp.mobilesafe.ui.SettingItemView
         android:id="@+id/siv_update"

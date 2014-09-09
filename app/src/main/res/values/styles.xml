@@ -57,7 +57,7 @@
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:text">设置完成</item>
-        <item name="android:onClick">finish</item>
+        <item name="android:onClick">next</item>
         <item name="android:textColor">#fff</item>
         <item name="android:background">@drawable/btn_burglar</item>
         <item name="android:layout_width">wrap_content</item>
