@@ -1,6 +1,5 @@
 package com.myapp.mobilesafe.activity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +28,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Created by 庹大伟 on 2014/8/18.
  */
-public class MainActivity extends Activity implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
 
     private GridView list_home;
     private MyAdapter adapter;

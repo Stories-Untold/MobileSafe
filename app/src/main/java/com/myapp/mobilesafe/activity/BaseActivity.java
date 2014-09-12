@@ -12,8 +12,8 @@ import com.myapp.mobilesafe.utils.ActivityUtil;
 public class BaseActivity extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstawnceState) {
+        super.onCreate(savedInstawnceState);
         ActivityUtil.add(this);
     }
 

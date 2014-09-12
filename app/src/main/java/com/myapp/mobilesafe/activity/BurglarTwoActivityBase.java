@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import com.myapp.mobilesafe.R;
 import com.myapp.mobilesafe.ui.SettingItemView;
@@ -24,6 +26,11 @@ public class BurglarTwoActivityBase extends BaseSetupActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.burglar_setup_two);
         bindSim = (SettingItemView) findViewById(R.id.bind_sim);
+        String simCode = sp.getString("sim", null);
+        if (!TextUtils.isEmpty(simCode)) {
+            bindSim.setChecked(true);
+            bindSim.setDesc("已绑定sim卡");
+        }
         //保存SIM卡的序列号
         manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         bindSim.setOnClickListener(new View.OnClickListener() {
@@ -32,17 +39,16 @@ public class BurglarTwoActivityBase extends BaseSetupActivity {
                 SharedPreferences.Editor editor = sp.edit();
                 if (bindSim.isChecked()) {
                     editor.remove("sim");
-                    editor.commit();
                     bindSim.setChecked(false);
                     bindSim.setDesc("sim卡没有绑定");
                 } else {
                     //得到SIM卡的序列号
                     String SimSerialNumber = manager.getSimSerialNumber();
                     editor.putString("sim", SimSerialNumber);
-                    editor.commit();
                     bindSim.setChecked(true);
                     bindSim.setDesc("已绑定sim卡");
                 }
+                editor.commit();
             }
         });
     }
@@ -55,6 +61,11 @@ public class BurglarTwoActivityBase extends BaseSetupActivity {
     }
 
     public void showNext() {
+        String simCode = sp.getString("sim", null);
+        if (TextUtils.isEmpty(simCode)) {
+            Toast.makeText(this, "没有绑定Sim卡", Toast.LENGTH_LONG).show();
+            return;
+        }
         Intent intent = new Intent(this, BurglarThreeActivityBase.class);
         startActivity(intent);
         overridePendingTransition(R.anim.next_setup_in, R.anim.next_setup_out);

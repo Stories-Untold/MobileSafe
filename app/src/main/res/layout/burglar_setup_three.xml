@@ -10,13 +10,17 @@
         style="@style/burglar_content_style"/>
 
     <EditText
+        android:id="@+id/safeNum"
         android:hint="请输入您的安全号码"
         android:inputType="phone"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <Button style="@style/btn_choose_person"/>
+    <Button
+        android:onClick="selectContact"
+        android:id="@+id/select_contact"
+        style="@style/btn_choose_person"/>
 
     <LinearLayout
         android:layout_gravity="center_horizontal"

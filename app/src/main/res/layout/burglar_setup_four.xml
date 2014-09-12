@@ -6,9 +6,10 @@
               android:layout_height="match_parent">
 
     <CheckBox
+        android:id="@+id/is_open_protect"
         android:padding="10dp"
         android:text="您没有开启防盗保护"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <LinearLayout

@@ -2,6 +2,7 @@ package com.myapp.mobilesafe.utils;
 
 import android.app.Activity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public class ActivityUtil {
 
-    private static List<Activity> activityMan;
+    private static List<Activity> activityMan = new ArrayList<Activity>();
 
     public static void add(Activity activity) {
         activityMan.add(activity);
