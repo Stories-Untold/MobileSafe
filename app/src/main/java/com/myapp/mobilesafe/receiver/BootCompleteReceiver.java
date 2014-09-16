@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 
 /**
@@ -20,9 +21,12 @@ public class BootCompleteReceiver extends BroadcastReceiver {
         manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         mSharedPreferences = context.getSharedPreferences("config", Context.MODE_PRIVATE);
         String simCode = mSharedPreferences.getString("sim", null);
-        String simSerialNumber = manager.getSimSerialNumber();
+        String simSerialNumber = manager.getSimSerialNumber() + "aaa";
+        String safePhone = mSharedPreferences.getString("safePhone", "");
         if (!simCode.equals(simSerialNumber)) {
             //Sim卡已经改变，发送短信给安全号码
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(safePhone, null, "Sim Changed", null, null);
         }
     }
 
