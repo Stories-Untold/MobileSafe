@@ -59,7 +59,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         list_home = (GridView) findViewById(R.id.list_home);
         list_home.setChoiceMode(ListView.CHOICE_MODE_NONE);
         adapter = new MyAdapter(this);
@@ -69,16 +68,26 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mActionBar.setTitle("手机安全卫士");
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        mActionBar.setTitle(names[i]);
         switch (i) {
-            //进入设置中心
-            case 8:
-                Intent intent = new Intent(this, SettingActivity.class);
-                startActivity(intent);
-                break;
             //手机防盗
             case 0:
                 showLostFindDialog();
+                break;
+            //进入高级工具
+            case 7:
+                openActivity(AtoolsActivity.class);
+                break;
+            //进入设置中心
+            case 8:
+                openActivity(SettingActivity.class);
                 break;
         }
     }

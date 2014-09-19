@@ -23,11 +23,16 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.myapp.mobilesafe.R;
+import com.myapp.mobilesafe.service.TelphoneListenerService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by 庹大伟 on 2014/8/18.
@@ -54,6 +59,9 @@ public class SplashActivity extends Activity {
         tv_splash_version.setText("版本号：" + getVersionName());
         sp = getSharedPreferences("config", MODE_PRIVATE);
         boolean update = sp.getBoolean("update", true);
+
+        //拷贝数据库到files目录下
+        copyDB();
         if (sp.getBoolean("update", true)) {
             //检查升级
             checkUpdate();
@@ -65,6 +73,32 @@ public class SplashActivity extends Activity {
                     start();
                 }
             }, 3000);
+        }
+    }
+
+    /**
+     * "data/data/com.myapp.mobilesafe/address.db";
+     */
+    private void copyDB() {
+        File file = new File(getFilesDir(), "address.db");
+        if (file.exists() && file.length() > 0) {
+            return;
+        } else {
+            InputStream is = getResources().openRawResource(R.raw.address);
+            try {
+                FileOutputStream outputStream = new FileOutputStream(file);
+                byte[] buffer = new byte[1024];
+                int len = 0;
+                while ((len = is.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, len);
+                }
+                is.close();
+                outputStream.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

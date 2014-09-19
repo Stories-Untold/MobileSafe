@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:mobile="http://schemas.android.com/apk/res/com.myapp.mobilesafe"
               xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#ffffff"
@@ -11,6 +12,16 @@
         mobile:settingTitle="设置是否自动更新"
         mobile:desc_off="自动更新已经关闭"
         mobile:desc_on="自动更新已经开启"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </com.myapp.mobilesafe.ui.SettingItemView>
+
+    <com.myapp.mobilesafe.ui.SettingItemView
+        android:id="@+id/show_address"
+        mobile:settingTitle="显示来电归属地"
+        mobile:desc_off="来电归属地已经关闭"
+        mobile:desc_on="来电归属地已经开启"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

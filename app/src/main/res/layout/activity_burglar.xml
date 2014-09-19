@@ -65,6 +65,14 @@
         android:layout_width="match_parent"
         android:layout_height="0.2dp"/>
 
+    <CheckBox
+        android:id="@+id/openAdmin"
+        android:visibility="gone"
+        android:textSize="20sp"
+        android:text="开启管理员权限"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <Button
         android:onClick="resetBurglar"
         android:id="@+id/reset_burglar"

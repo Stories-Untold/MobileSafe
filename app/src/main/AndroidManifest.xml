@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
 
     <application
         android:allowBackup="true"
@@ -25,7 +27,11 @@
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.SettingActivity"
@@ -35,6 +41,8 @@
         <activity android:name=".activity.BurglarTwoActivityBase"/>
         <activity android:name=".activity.BurglarThreeActivityBase"/>
         <activity android:name=".activity.BurglarFourActivityBase"/>
+        <activity android:name=".activity.AtoolsActivity"/>
+        <activity android:name=".activity.NumberAddressQueryActivity"/>
 
         <receiver android:name=".receiver.BootCompleteReceiver">
             <intent-filter>
@@ -61,6 +69,7 @@
         </receiver>
 
         <service android:name=".service.LocationService"/>
+        <service android:name=".service.TelphoneListenerService"/>
     </application>
 
 </manifest>

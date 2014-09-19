@@ -1,5 +1,6 @@
 package com.myapp.mobilesafe.activity;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +12,13 @@ import com.myapp.mobilesafe.utils.ActivityUtil;
  */
 public class BaseActivity extends Activity {
 
+    public ActionBar mActionBar;
+
     @Override
     protected void onCreate(Bundle savedInstawnceState) {
         super.onCreate(savedInstawnceState);
         ActivityUtil.add(this);
+        mActionBar = getActionBar();
     }
 
     @Override
