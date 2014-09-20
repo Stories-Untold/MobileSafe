@@ -63,7 +63,7 @@ public class TelphoneListenerService extends Service {
             super.onCallStateChanged(state, incomingNumber);
             switch (state) {
                 case TelephonyManager.CALL_STATE_RINGING:
-                    view = MobilesafeToast.show(TelphoneListenerService.this, NumberAddressQueryUtils.queryAddress(incomingNumber));
+                    view = MobilesafeToast.show(getApplicationContext(), NumberAddressQueryUtils.queryAddress(incomingNumber));
                     break;
                 case TelephonyManager.CALL_STATE_IDLE:
                     WindowManager manager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);

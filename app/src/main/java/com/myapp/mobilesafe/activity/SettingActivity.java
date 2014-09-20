@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.myapp.mobilesafe.R;
+import com.myapp.mobilesafe.fragment.AddressSelectFragment;
 import com.myapp.mobilesafe.service.TelphoneListenerService;
 import com.myapp.mobilesafe.ui.SettingItemView;
 import com.myapp.mobilesafe.utils.ServiceUtils;
@@ -63,6 +64,14 @@ public class SettingActivity extends BaseActivity {
                     ShowAddress.setChecked(true);
                     startService(intent);
                 }
+            }
+        });
+        ShowAddress.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                AddressSelectFragment addressSelectFragment = AddressSelectFragment.newInstance("请选择风格");
+                addressSelectFragment.show(getFragmentManager(), "select_address_style");
+                return true;
             }
         });
         mSettingItemView.setOnClickListener(new View.OnClickListener() {
